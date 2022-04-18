@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "cameraRN",
+    "slug": "cameraRN",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
