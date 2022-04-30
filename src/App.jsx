@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
-  StyleSheet,
   Text,
   View,
   SafeAreaView,
@@ -8,10 +7,15 @@ import {
   Modal,
   Image,
 } from "react-native";
+
 import { Camera } from "expo-camera";
+import { StatusBar } from "expo-status-bar";
 import { FontAwesome } from "@expo/vector-icons";
 import * as MediaLibrary from 'expo-media-library';
+import styles from './styles'
+
 export default function App() {
+
   const camRef = useRef(null);
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
@@ -51,6 +55,7 @@ export default function App() {
   }
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar style="light"/>
       <Camera style={styles.camera} type={type} ref={camRef} ratio={"16:9"}>
         <View style={styles.btnActions}>
           <TouchableOpacity
@@ -88,64 +93,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  camera: {
-    width: "100%",
-    height: "100%",
-  },
-  btnActions: {
-    flex: 1,
-    backgroundColor: "transparent",
-    flexDirection: "row",
-  },
-
-  btnFlip: {
-    position: "absolute",
-    bottom: 50,
-    left: 30,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fff",
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-  },
-  btnTakePicture: {
-    position: "absolute",
-    bottom: 50,
-    right: 30,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "red",
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-  },
-  contentModal:{
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "flex-end",
-    margin: 20
-
-  },
-  closeBtn:{
-    position: "absolute",
-    top: 10,
-    left: 2,
-    margin: 10
-  },
-  uploadBtn:{
-    position: "absolute",
-    top: 10,
-    right: 2,
-    margin: 10
-  },
-  imgPhoto:{
-    width: "100%",
-    height: 400,
-  }
-});
